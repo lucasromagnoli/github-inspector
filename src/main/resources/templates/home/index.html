@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout_master}">
+<head>
+<meta charset="UTF-8">
+<title>Inspetor do Github</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+	<form method="GET" action="/home/buscar-usuario">
+	  <div class="form-group">
+	    <label for="username">Login no Github</label>
+	    <input type="text" class="form-control" name="username" aria-describedby="usernameHelp" placeholder="Ex.: lucasromagnoli">
+	    <small id="usernameHelp" class="form-text text-muted">Usuário do Github, onde vamos coletar as informações.</small>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Buscar</button>
+	</form>
+	
+	<div th:if="${usuarioGithubDto != null}">
+		<label>Username: </label> <span th:text="${usuarioGithubDto.name}"></span>
+		<img class="img-thumbnail" alt="Foto do usuário" th:src="${usuarioGithubDto.avatarUrl}">
+		<small th:text="${usuarioGithubDto.bio}"></small>
+	</div>
+	
+	</div>
+</body>
+</html>
